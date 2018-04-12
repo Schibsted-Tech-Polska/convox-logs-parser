@@ -27,6 +27,8 @@ var rootCmd = &cobra.Command{
 	RunE:  cmdRoot,
 }
 
+// Execute is a command required by cobra package in order to run application
+// It runs CLI parser and handles further actions
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

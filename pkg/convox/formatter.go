@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+// Formatter is a type which acts as a io.Writer interface. This way convox-logs-parser is able
+// to fetch all bytestreams in order to parse them
 type Formatter struct{}
 
 var output io.Writer = os.Stdout

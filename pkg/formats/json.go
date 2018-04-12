@@ -1,16 +1,17 @@
 package formats
 
 import (
-	"errors"
 	"fmt"
 )
 
-type JsonMessage struct {
+// JSONMessage is basic Message containing JSON structure
+type JSONMessage struct {
 	jsonObject map[string]interface{}
 }
 
-func NewJsonMessage(jsonObject map[string]interface{}) JsonMessage {
-	jm := JsonMessage{jsonObject}
+// NewJSONMessage is a JSONMessage factory.
+func NewJSONMessage(jsonObject map[string]interface{}) JSONMessage {
+	jm := JSONMessage{jsonObject}
 
 	return jm
 }
@@ -18,7 +19,7 @@ func NewJsonMessage(jsonObject map[string]interface{}) JsonMessage {
 func getJSONStringFieldSafe(fn string, jsonObject map[string]interface{}) (string, error) {
 	switch v := jsonObject[fn].(type) {
 	default:
-		return "", errors.New(fmt.Sprintf("Not supported type [%s]", v))
+		return "", fmt.Errorf("Not supported type [%s]", v)
 	case string:
 		return jsonObject[fn].(string), nil
 	}

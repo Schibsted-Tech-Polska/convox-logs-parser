@@ -2,8 +2,10 @@ package formats
 
 import "fmt"
 
+// StandardJavaMessage parses log4j2 standard JSON format and displays it
+// as it would be displayed normally in stdout without JSON layout.
 type StandardJavaMessage struct {
-	JsonMessage
+	JSONMessage
 	IsValidJavaMessage bool
 
 	thread     string
@@ -12,14 +14,18 @@ type StandardJavaMessage struct {
 	message    string
 }
 
+// NewStandardJavaMessage is a StandardJavaMessage factory.
+// It creates a new StandardJavaMessage object with provided unmarshalled JSON object
+//
+// Params: jsonObject map[string]interface{}
 func NewStandardJavaMessage(jsonObject map[string]interface{}) StandardJavaMessage {
 	var sj StandardJavaMessage
-	sj.JsonMessage = NewJsonMessage(jsonObject)
-	sj.parseJsonObject()
+	sj.JSONMessage = NewJSONMessage(jsonObject)
+	sj.parseJSONObject()
 	return sj
 }
 
-func (sj *StandardJavaMessage) parseJsonObject() {
+func (sj *StandardJavaMessage) parseJSONObject() {
 	var err error
 	sj.SetToValid()
 
@@ -46,10 +52,14 @@ func (sj StandardJavaMessage) String() string {
 	return out
 }
 
+// SetToValid sets the property of StandardJavaMessage indicating that the provided jsonObject
+// contains valid Log4j2 standard message (all required fields are in place)
 func (sj *StandardJavaMessage) SetToValid() {
 	sj.IsValidJavaMessage = true
 }
 
+// SetToInvalid sets the property of StandardJavaMessage indicating that the provided jsonObject
+// does not contain valid Log4j2 standard message (some required fields are missing)
 func (sj *StandardJavaMessage) SetToInvalid() {
 	sj.IsValidJavaMessage = false
 }
