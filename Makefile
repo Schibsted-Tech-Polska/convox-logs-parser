@@ -40,3 +40,7 @@ clean:
 
 .PHONY: all
 all: test release
+
+.PHONY: release_tag
+release_tag:
+	git tag `date +%Y%m%d%H%M`
