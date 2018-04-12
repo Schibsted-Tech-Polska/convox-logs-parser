@@ -2,7 +2,7 @@ language: go
 go:
   - 1.9
 script:
-  - make -j1
+  - make
 before_deploy:
   - make release -j2
 deploy:
