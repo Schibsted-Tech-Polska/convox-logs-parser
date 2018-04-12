@@ -1,15 +1,13 @@
 package formats
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 )
 
 type JsonMessage struct {
 	jsonObject map[string]interface{}
 }
-
-
 
 func NewJsonMessage(jsonObject map[string]interface{}) JsonMessage {
 	jm := JsonMessage{jsonObject}

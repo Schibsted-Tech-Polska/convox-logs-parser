@@ -1,10 +1,10 @@
 package convox
 
 import (
-	"testing"
 	"bufio"
 	"bytes"
 	"strings"
+	"testing"
 )
 
 func TestFormatter_Write(t *testing.T) {

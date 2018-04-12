@@ -1,9 +1,9 @@
 package convox
 
 import (
+	"fmt"
 	"github.com/radekl/convox-json-logs/pkg/formats"
 	"strings"
-	"fmt"
 )
 
 type convoxFrame struct {

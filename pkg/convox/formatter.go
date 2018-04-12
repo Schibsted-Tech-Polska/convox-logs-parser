@@ -1,10 +1,10 @@
 package convox
 
 import (
-	"strings"
 	"fmt"
-	"os"
 	"io"
+	"os"
+	"strings"
 )
 
 type Formatter struct{}

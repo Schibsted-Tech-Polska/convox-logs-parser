@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/spf13/cobra"
-	"strings"
-	"os/exec"
-	"log"
 	"github.com/radekl/convox-json-logs/pkg/convox"
+	"github.com/spf13/cobra"
+	"log"
+	"os/exec"
 	"strconv"
+	"strings"
 )
 
 var app string
