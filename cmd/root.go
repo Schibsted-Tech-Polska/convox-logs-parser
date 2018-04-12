@@ -9,12 +9,14 @@ import (
 	"os/exec"
 	"log"
 	"github.com/radekl/convox-json-logs/pkg/convox"
+	"strconv"
 )
 
 var app string
 var rack string
 var since string
 var filter string
+var follow bool
 
 var convoxFormatter convox.Formatter
 
@@ -35,9 +37,9 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&app, "app", "a", "", "app name inferred from current directory if not specified")
 	rootCmd.PersistentFlags().StringVarP(&rack, "rack", "r", "", "rack name")
-	rootCmd.PersistentFlags().StringVarP(&since, "since", "s", "2m", "show logs since a duration (e.g. 10m or 1h2m10s)")
+	rootCmd.PersistentFlags().StringVarP(&since, "since", "s", "30s", "show logs since a duration (e.g. 10m or 1h2m10s)")
 	rootCmd.PersistentFlags().StringVar(&filter, "filter", "", "filter the logs by a given token")
-	rootCmd.PersistentFlags().BoolP("follow", "f", false, "keep streaming new log output")
+	rootCmd.PersistentFlags().BoolVarP(&follow, "follow", "f", false, "keep streaming new log output")
 
 }
 
@@ -47,10 +49,14 @@ func cmdRoot(cmd *cobra.Command, args []string) error {
 
 	var am []string
 	am = append(am, "logs")
-	am = append(am, "--follow=false")
-	am = append(am, "--rack=production")
-	am = append(am, "--app=subscription-entitlement")
-	am = append(am, "--since=5s")
+	am = append(am, "--follow="+strconv.FormatBool(follow))
+	am = append(am, "--since="+since)
+	if rack != "" {
+		am = append(am, "--rack="+rack)
+	}
+	if app != "" {
+		am = append(am, "--app="+app)
+	}
 
 	comm := exec.Command("convox", am...)
 
