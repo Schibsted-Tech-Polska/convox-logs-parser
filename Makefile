@@ -23,8 +23,8 @@ os = $(word 1, $@)
 
 .PHONY: $(PLATFORMS)
 $(PLATFORMS):
-	mkdir -p release/$(os)
-	GOOS=$(os) GOARCH=amd64 go build -o release/$(os)/$(BINARY)
+	mkdir -p release/
+	GOOS=$(os) GOARCH=amd64 go build -o release/$(BINARY)-$(os)
 
 .PHONY: release
 release: windows linux darwin
