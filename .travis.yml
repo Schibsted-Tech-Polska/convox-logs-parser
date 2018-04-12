@@ -1,0 +1,14 @@
+language: go
+go:
+  - 1.10
+script:
+  - make
+before_deploy:
+  - make release -j2
+deploy:
+  provider: releases
+  file: release/*
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
