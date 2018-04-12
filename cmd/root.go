@@ -9,7 +9,6 @@ import (
 	"log"
 	"os/exec"
 	"strconv"
-	"strings"
 )
 
 var app string
@@ -46,9 +45,6 @@ func init() {
 }
 
 func cmdRoot(cmd *cobra.Command, args []string) error {
-	var aMap = []string{app, rack, since, filter}
-	fmt.Println("Got following params: " + strings.Join(aMap, ", "))
-
 	var am []string
 	am = append(am, "logs")
 	am = append(am, "--follow="+strconv.FormatBool(follow))
