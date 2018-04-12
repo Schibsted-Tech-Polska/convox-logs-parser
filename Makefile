@@ -14,3 +14,19 @@ $(GOMETALINTER):
 .PHONY: lint
 lint: $(GOMETALINTER)
 	gometalinter ./... --vendor -e "Subprocess launching with variable"
+
+BINARY := clp
+PLATFORMS := windows linux darwin
+os = $(word 1, $@)
+
+.PHONY: $(PLATFORMS)
+$(PLATFORMS):
+	mkdir -p release/$(os)
+	GOOS=$(os) GOARCH=amd64 go build -o release/$(os)/$(BINARY)
+
+.PHONY: release
+release: windows linux darwin
+
+.PHONY: clean
+clean:
+	rm -r release/
