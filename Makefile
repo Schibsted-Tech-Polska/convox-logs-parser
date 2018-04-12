@@ -1,5 +1,7 @@
 PKGS := $(shell go list ./... | grep -v /vendor)
 
+.default: test
+
 .PHONY: test
 test: lint
 	go test $(PKGS)
@@ -30,3 +32,6 @@ release: windows linux darwin
 .PHONY: clean
 clean:
 	rm -r release/
+
+.PHONY: all
+all: test release
