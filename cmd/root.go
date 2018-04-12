@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/radekl/convox-json-logs/pkg/convox"
+	"github.com/radekl/convox-logs-parser/pkg/convox"
 	"github.com/spf13/cobra"
 	"log"
 	"os/exec"
@@ -21,7 +21,7 @@ var follow bool
 var convoxFormatter convox.Formatter
 
 var rootCmd = &cobra.Command{
-	Use:   "convox-json-logs",
+	Use:   "convox-logs-parser",
 	Short: "Convox logs formatter",
 	Long:  `Convox logs formatter.`,
 	RunE:  cmdRoot,

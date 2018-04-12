@@ -2,7 +2,7 @@ package convox
 
 import (
 	"fmt"
-	"github.com/radekl/convox-json-logs/pkg/formats"
+	"github.com/radekl/convox-logs-parser/pkg/formats"
 	"strings"
 )
 
