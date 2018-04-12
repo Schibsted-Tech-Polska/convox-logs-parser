@@ -11,10 +11,15 @@ GOMETALINTER := $(BIN_DIR)/gometalinter
 
 $(GOMETALINTER):
 	go get -u github.com/alecthomas/gometalinter
-	gometalinter --install &> /dev/null
+	gometalinter --install
+
+.PHONY: dependencies
+dependencies:
+	go get -u github.com/golang/dep/cmd/dep
+	dep ensure
 
 .PHONY: lint
-lint: $(GOMETALINTER)
+lint: $(GOMETALINTER) dependencies
 	gometalinter ./... --vendor -e "Subprocess launching with variable"
 
 BINARY := clp

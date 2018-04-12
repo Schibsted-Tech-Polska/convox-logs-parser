@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/radekl/convox-logs-parser/pkg/convox"
+	"github.com/Schibsted-Tech-Polska/convox-logs-parser/pkg/convox"
 	"github.com/spf13/cobra"
 	"log"
 	"os/exec"
