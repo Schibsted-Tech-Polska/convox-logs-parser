@@ -14,3 +14,10 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+addons:
+  sonarcloud:
+    organization: "schibsted-tech-polska-pub"
+    token:
+      secure: "TcjHGIZI6xTt/xPH8ZuXdtCkbpw8UNyIj7/FA9xzfRYQoCh3yHNAlOcBfIdL7xAyNj8VF7m+2IGF9zZI0Sa4+cmeR/Ub33sHtkw8gvmQhnRp8gngmzMrIJpsSYwyBNySEfyBGInDjIO89uNbAxH50seseUY2Vfkhx88mYxX3n6HArvG3z+sh6QEG0IobXHgL0giFUyrgtxgrONY4yZkbB6CSkhnJZbxtmZFnHVWFpPSJP6nWIwssXSj6QFewqA7zz4vv9guGPzgExMeZsvql3BAcpLyH7VI8lb88xhl9kU631SZZtHNYPR83saTRRNJg3/HZt3GtmkvTHSmrjvcO/qrqNczGHocoZo+M6Rizv4nIxaK2KphFnbgqB+mR8eHepnhJLt9CWt9qdMJFqtHxgyScdvZ6cH2UB3DdeGtCGHs5By9D7iXnOpyHVQkxlnyYObc6DvJ2jlMReiHPrVogKhMH3MoI9A0F/h7Z/oNeJjJq5JbS8QTBVT58DxbF02FpLlMs5fUxc0R0dQIQF+LxdSS6Q7Ppg9XT+jEgf9l8u0XyKfTMYe7MNEzLyo73OlT6NKM0G0lnljgelGtMSH6sEnXdWQUH9RpmDDWyIcfDGJ3ZjNM5rXy+MRHd2yaVOBuo4daTkAQZ4545jasA9Qds5kA6DdbG7ji6FrKRqgEi6TY="
+script:
+  - sonar-scanner

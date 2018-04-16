@@ -4,7 +4,7 @@ PKGS := $(shell go list ./... | grep -v /vendor)
 
 .PHONY: test
 test: lint
-	go test $(PKGS)
+	go test -coverprofile=coverage.out $(PKGS)
 
 BIN_DIR := $(GOPATH)/bin
 GOMETALINTER := $(BIN_DIR)/gometalinter
