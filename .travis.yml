@@ -7,6 +7,8 @@ before_deploy:
   - make release -j2
 deploy:
   provider: releases
+  api_key:
+    secure: "T0Abhi1WY2kaYj3v6QLnM2uc/gCPKdK/Pk2jhth09OzO5IJBPlEzf++44hrhgVn0Jmu/mwpT0I8fvbL3a63YGilNecgQOoJVAogKkhq1Y44pQWV5+Pz4nqCZGIG2W1GTRhJ/1Odv8RDy3MAlxm5o5cp2ZkADuezOaAedh8sJih0V/3CaJmccdN6T4GihYjuD5pK0x0Wi08RwBj63Uxs9dhc2hVJn5650ksDTGc+MsLLOsU3bQOtpauC+1pvsDsi9tkZ3QIpFdz9Yl+KxzACvCWz+fkhA1FZ19KG3ZLLmhNwsHFu5Z49UyTKsr6MlZDyAy109bzhlh47grkW2Tc02HSeOtVTHe/jhtLU9Rz3jH92+jkX8j6FvqS6Tq+utHarXCLvRmDB4Qzn6RMl7nR4VXgguvSSEd903QafhpToOyho04eSjCFbIiGDdh8V14gRWqtTAi/dYeIuZcCJCrsoo8n/jeT4+rpKFq7aFHHGjDZjXgUJR8AFaw3rWDbSA8ouR/QTf1okdcwoi0U1DVo6rT4I96ujI6U6OEzDR4a3BjktwzP+r8IS8GNnuRyZJClGvDzFq9KmGXVdRvZ6iw6Q0sAU16wci0VIl2qFUmbJn/zrCLmXNRxzIDyIx2FopeSE3YuNDuJbxPGwBVv7bGpzsAmOPdqHhRmIBLs6N7YcF23g="
   file: release/*
   file_glob: true
   skip_cleanup: true
