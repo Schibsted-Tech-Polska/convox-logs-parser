@@ -10,7 +10,7 @@ GOCOV_XML := $(BIN_DIR)/gocov-xml
 GO_JUNIT_REPORT := $(BIN_DIR)/go-junit-report
 
 .PHONY: test
-test: lint $(GOCOV) $(GOCOV_XML) reports_prepare
+test: lint $(GOCOV) $(GOCOV_XML) $(GO_JUNIT_REPORT) reports_prepare
 	go test -v $(PKGS)
 	go test -v $(PKGS) | $(GO_JUNIT_REPORT) > reports/test.xml
 	$(GOCOV) test $(PKGS) | $(GOCOV_XML) > reports/coverage.xml
