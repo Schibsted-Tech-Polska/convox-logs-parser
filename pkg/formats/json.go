@@ -24,3 +24,12 @@ func getJSONStringFieldSafe(fn string, jsonObject map[string]interface{}) (strin
 		return jsonObject[fn].(string), nil
 	}
 }
+
+func getJSONObjectFieldSafe(fn string, jsonObject map[string]interface{}) (map[string]interface{}, error) {
+	switch v := jsonObject[fn].(type) {
+	default:
+		return nil, fmt.Errorf("Not supported type [%s]", v)
+	case map[string]interface{}:
+		return jsonObject[fn].(map[string]interface{}), nil
+	}
+}

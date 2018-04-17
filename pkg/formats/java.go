@@ -1,6 +1,9 @@
 package formats
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // StandardJavaMessage parses log4j2 standard JSON format and displays it
 // as it would be displayed normally in stdout without JSON layout.
@@ -47,9 +50,20 @@ func (sj *StandardJavaMessage) parseJSONObject() {
 }
 
 func (sj StandardJavaMessage) String() string {
-	out := fmt.Sprintf("[%s] %s %s - %s", sj.thread, sj.level, sj.loggerName, sj.message)
+	out := sj.formatMessage()
 
 	return out
+}
+
+func (sj StandardJavaMessage) formatMessage() string {
+	msg := fmt.Sprintf("[%s] %s %s - %s", sj.thread, sj.level, sj.loggerName, sj.message)
+	if thrown, err := getJSONObjectFieldSafe("thrown", sj.jsonObject); err == nil {
+		if stm, err := getJSONStringFieldSafe("extendedStackTrace", thrown); err == nil {
+			msg = strings.Join([]string{msg, stm}, "\n")
+		}
+	}
+
+	return msg
 }
 
 // SetToValid sets the property of StandardJavaMessage indicating that the provided jsonObject
