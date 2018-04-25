@@ -21,3 +21,10 @@ Currently only pre-defined fields are supported, though it is planned to allow u
 
 ## References
 [convox/rack](https://github.com/convox/rack) - as this application is used as a log parser, the log source is worth to be mentioned.
+
+## How to install?
+
+You should go to ***releases*** tab, select latest version and at ***Assets*** part - download proper version for your OS, like:
+```
+wget https://github.com/Schibsted-Tech-Polska/convox-logs-parser/releases/download/201804191803/clp-darwin -O /usr/local/bin/clp && chmod a+x /usr/local/bin/clp
+```
