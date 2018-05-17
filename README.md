@@ -24,7 +24,12 @@ Currently only pre-defined fields are supported, though it is planned to allow u
 
 ## How to install?
 
-You should go to ***releases*** tab, select latest version and at ***Assets*** part - download proper version for your OS, like:
+You should go to ***releases*** tab, select latest version and at ***Assets*** part - download proper version for your OS, 
+
+If you want to download latest version for your architecture use following command (where ARCH can be one of `linux`, `darwin` or `windows`).
 ```
-wget https://github.com/Schibsted-Tech-Polska/convox-logs-parser/releases/download/201804191803/clp-darwin -O /usr/local/bin/clp && chmod a+x /usr/local/bin/clp
+ARCH="linux"; curl -L $(curl -s https://api.github.com/repos/Schibsted-Tech-Polska/convox-logs-parser/releases/latest | jq -r ".assets[] | select(.name == \"clp-$ARCH\") | .browser_download_url") -o /usr/local/bin/clp; chmod +x /usr/local/bin/clp
 ```
+
+Above command downloads `convox-logs-parser` to file `/usr/local/bin/clp` and adds to it execute permissions.
+Requires commands to exist: `curl`, `jq`, `chmod`.
