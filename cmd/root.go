@@ -40,7 +40,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&rack, "rack", "r", "", "rack name")
 	rootCmd.PersistentFlags().StringVarP(&since, "since", "s", "30s", "show logs since a duration (e.g. 10m or 1h2m10s)")
 	rootCmd.PersistentFlags().StringVar(&filter, "filter", "", "filter the logs by a given token")
-	rootCmd.PersistentFlags().BoolVarP(&follow, "follow", "f", false, "keep streaming new log output")
+	rootCmd.PersistentFlags().BoolVarP(&follow, "follow", "f", true, "keep streaming new log output")
 
 }
 
