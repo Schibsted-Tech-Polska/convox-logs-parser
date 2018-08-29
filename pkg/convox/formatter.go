@@ -20,7 +20,7 @@ func (f *Formatter) Write(p []byte) (n int, err error) {
 	for _, line := range lines {
 		if len(line) > 0 {
 			pl := getConvoxFrame(line)
-			fmt.Fprintln(output, pl)
+			_,_ = fmt.Fprintln(output, pl)
 		}
 	}
 

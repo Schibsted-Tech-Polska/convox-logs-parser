@@ -39,8 +39,8 @@ reports_prepare:
 
 .PHONY: lint
 lint: $(GOMETALINTER) dependencies reports_prepare
-	$(GOMETALINTER) ./... --vendor -e "Subprocess launching with variable"
-	$(GOMETALINTER) ./... --vendor -e "Subprocess launching with variable" --checkstyle > reports/report.xml
+	$(GOMETALINTER) ./... --vendor -e "Subprocess launching with variable" -e "Subprocess launched with variable"
+	$(GOMETALINTER) ./... --vendor -e "Subprocess launching with variable" -e "Subprocess launched with variable" --checkstyle > reports/report.xml
 
 BINARY := clp
 PLATFORMS := windows linux darwin
