@@ -8,7 +8,6 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"os/exec"
-	"strconv"
 )
 
 var app string
@@ -47,7 +46,9 @@ func init() {
 func cmdRoot(cmd *cobra.Command, args []string) error {
 	var am []string
 	am = append(am, "logs")
-	am = append(am, "--follow="+strconv.FormatBool(follow))
+	if !follow {
+		am = append(am, "--no-follow")
+	}
 	am = append(am, "--since="+since)
 	if rack != "" {
 		am = append(am, "--rack="+rack)
@@ -59,8 +60,10 @@ func cmdRoot(cmd *cobra.Command, args []string) error {
 	comm := exec.Command("convox", am...)
 
 	comm.Stdout = &convoxFormatter
+	comm.Stderr = os.Stderr
 
 	if err := comm.Run(); err != nil {
+		log.Println("Tried to run convox command failed.")
 		log.Fatal(err)
 	}
 
